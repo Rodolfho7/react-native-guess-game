@@ -1,16 +1,33 @@
 import React from 'react';
-import { View, Text, StyleSheet, Button } from 'react-native';
-import Card from '../components/Card';
+import { View, Text, StyleSheet, Image } from 'react-native';
+import Colors from '../constants/colors';
+import MainButton from '../components/MainButton';
+
 const GameOverScreen = props => {
   return (
     <View style={styles.screen}>
-      <Card style={styles.card}>
-        <Text style={styles.font}>The game is over!</Text>
-        <Text style={styles.font}>{props.rounds} tries</Text>
-        <Text style={styles.font}>The number was: {props.correctNumber}</Text>
-      </Card>
+      <View style={styles.screen}>
+        <Text style={styles.font}>The Game is Over!</Text>
+        <View style={styles.imageContainer}>
+          <Image
+            // source={require('../assets/success.png')}
+            source={{ uri: 'https://images.unsplash.com/photo-1535224206242-487f7090b5bb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80' }}
+            style={styles.image}
+            resizeMode='cover' />
+        </View>
+        <View style={styles.textContainer}>
+          <Text style={styles.font}>
+            You needed
+            <Text style={styles.marked}> {props.rounds} </Text>
+            tries to reach to the number
+            <Text style={styles.marked}> {props.correctNumber} </Text>
+          </Text>
+        </View>
+      </View>
       <View style={styles.button}>
-        <Button title='New Game' onPress={props.onBackToStart} />
+        <MainButton onPress={props.onBackToStart}>
+          NEW GAME
+        </MainButton>
       </View>
     </View>
   );
@@ -24,13 +41,35 @@ const styles = StyleSheet.create({
   },
   button: {
     width: 200,
-    marginTop: 10
+    marginBottom: 10
   },
   card: {
     alignItems: 'center'
   },
   font: {
-    fontSize: 23
+    fontSize: 18,
+    fontWeight: "bold",
+    textAlign: 'center'
+  },
+  image: {
+    width: '100%',
+    height: '100%'
+  },
+  imageContainer: {
+    borderRadius: 150,
+    borderWidth: 3,
+    borderColor: 'black',
+    overflow: 'hidden',
+    marginVertical: 10,
+    width: 300,
+    height: 300
+  },
+  textContainer: {
+    width: '70%',
+    textAlign: 'center',
+  },
+  marked: {
+    color: Colors.primary
   }
 });
 
