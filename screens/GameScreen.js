@@ -71,11 +71,14 @@ const GameScreen = props => {
           <Ionicons name='md-add' size={24} />
         </MainButton>
       </Card>
-      <Card style={styles.buttonContainer}>
-        <ScrollView>
-          {listGuesses.map((item, index) => <Text style={{textAlign: 'center'}} key={index}>{item.key}</Text>)}
-        </ScrollView>
-      </Card>
+      <ScrollView>
+        {listGuesses.map((item, index) =>
+          <View style={styles.itemList} key={index}>
+            <Text style={{color: 'white' }}>#{listGuesses.length - index}</Text>
+            <Text style={{color: 'white' }}>{item.key}</Text>
+          </View>
+        )}
+      </ScrollView>
     </View>
   );
 }
@@ -92,6 +95,17 @@ const styles = StyleSheet.create({
     marginTop: 20,
     maxWidth: '80%',
     width: 300
+  },
+  itemList: {
+    borderWidth: 1,
+    backgroundColor: Colors.primary,
+    paddingHorizontal: 10,
+    width: 250,
+    height: 60,
+    marginTop: 5,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center'
   }
 });
 
