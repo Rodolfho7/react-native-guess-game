@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { View, Text, Button, StyleSheet, TouchableWithoutFeedback, Keyboard, Alert } from 'react-native';
+import { View, Text, Button, StyleSheet, TouchableWithoutFeedback, Keyboard, Alert, Dimensions } from 'react-native';
 import Card from '../components/Card';
 import Colors from '../constants/colors';
 import Input from '../components/Input';
@@ -100,8 +100,10 @@ const styles = StyleSheet.create({
     marginVertical: 10 //same as marginBotton and marginTop
   },
   inputContainer: {
-    width: 300,
-    maxWidth: '80%',
+    width: '80%',
+    maxWidth: '95%',
+    minWidth: 300,
+    //maxWidth: '80%',
     alignItems: 'center'
   },
   buttonContainer: {
@@ -111,7 +113,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15
   },
   buttonWidth: {
-    width: 100
+    //width: 100,
+    width: Dimensions.get('window').width / 4
   },
   input: {
     width: 60,

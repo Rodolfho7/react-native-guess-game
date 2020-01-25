@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, Text, StyleSheet, Image, Dimensions } from 'react-native';
 import Colors from '../constants/colors';
 import MainButton from '../components/MainButton';
 
@@ -61,8 +61,8 @@ const styles = StyleSheet.create({
     borderColor: 'black',
     overflow: 'hidden',
     marginVertical: 10,
-    width: 300,
-    height: 300
+    width: Dimensions.get('window').width * 0.7,
+    height: Dimensions.get('window').width * 0.7
   },
   textContainer: {
     width: '70%',

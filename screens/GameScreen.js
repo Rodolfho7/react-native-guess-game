@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { View, Text, StyleSheet, Alert, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, Alert, ScrollView, Dimensions } from 'react-native';
 import NumberContainer from '../components/NumberContainer';
 import Card from '../components/Card';
 import MainButton from '../components/MainButton';
@@ -70,15 +70,17 @@ const GameScreen = props => {
         <MainButton onPress={nextGuessHandler.bind(this, 'greater')}>
           <Ionicons name='md-add' size={24} />
         </MainButton>
-      </Card>
-      <ScrollView>
-        {listGuesses.map((item, index) =>
-          <View style={styles.itemList} key={index}>
-            <Text style={{color: 'white' }}>#{listGuesses.length - index}</Text>
-            <Text style={{color: 'white' }}>{item.key}</Text>
-          </View>
-        )}
-      </ScrollView>
+      </Card> 
+      <View style={styles.listContainer}>
+        <ScrollView contentContainerStyle={styles.list}>
+          {listGuesses.map((item, index) =>
+            <View style={styles.itemList} key={index}>
+              <Text style={{ color: 'white' }}>#{listGuesses.length - index}</Text>
+              <Text style={{ color: 'white' }}>{item.key}</Text>
+            </View>
+          )}
+        </ScrollView>
+      </View>
     </View>
   );
 }
@@ -92,7 +94,7 @@ const styles = StyleSheet.create({
   buttonContainer: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    marginTop: 20,
+    marginTop: Dimensions.get('window').height > 600 ? 20 : 10,
     maxWidth: '80%',
     width: 300
   },
@@ -106,6 +108,16 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center'
+  },
+  listContainer: {
+    flex: 1,
+    //width: '80%'
+    width: Dimensions.get('window').width > 350 ? '60%' : '80%'
+  },
+  list: {
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    flexGrow: 1
   }
 });
 
