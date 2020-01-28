@@ -101,8 +101,8 @@ const styles = StyleSheet.create({
   itemList: {
     borderWidth: 1,
     backgroundColor: Colors.primary,
-    paddingHorizontal: 10,
-    width: 250,
+    padding: 10,
+    width: '100%',
     height: 60,
     marginTop: 5,
     flexDirection: 'row',
@@ -111,7 +111,7 @@ const styles = StyleSheet.create({
   },
   listContainer: {
     flex: 1,
-    //width: '80%'
+    //width: '100%'
     width: Dimensions.get('window').width > 350 ? '60%' : '80%'
   },
   list: {
